@@ -1,0 +1,41 @@
+libname CUSTOMSO
+<--START
+sv_a  = "20000099999000" 
+sv_b = "VND"
+sv_c = "100000"
+sv_d = "TEST"
+sv_e = BANCS.STDIN.BODDate 
+sv_f = "C"
+sv_u = urhk_SetUrhkInp("tranHdr.tranTypeSubType.tranType|C")
+sv_u = urhk_SetUrhkInp("tranHdr.tranTypeSubType.tranSubType|NR")
+sv_u = urhk_SetUrhkInp("tranDtl.ignoreXcpnFlg|I")
+sv_u = urhk_SetUrhkInp("tranHdr.tranIdentifier.tranDate|25-12-2016")
+
+sv_a = urhk_SetUrhkInp("tranDtl.partTranDetailLL.<rec_0>.key.serial_num|0")
+sv_a = urhk_SetUrhkInp("tranDtl.partTranDetailLL.<rec_0>.pTranIdentifier.tranDate|25-12-2016")
+sv_u = urhk_SetUrhkInp("tranDtl.partTranDetailLL.<rec_0>.acctId.foracid|20000099999000")
+sv_u = urhk_SetUrhkInp("tranDtl.partTranDetailLL.<rec_0>.acctId.crncyCode|VND") 
+sv_u = urhk_SetUrhkInp("tranDtl.partTranDetailLL.<rec_0>.valueDate|25-12-2016")
+sv_u = urhk_SetUrhkInp("tranDtl.partTranDetailLL.<rec_0>.glDate|25-12-2016")
+sv_a = urhk_SetUrhkInp("tranDtl.partTranDetailLL.<rec_0>.pTranIdentifier.partTranSrlNum|   2")
+sv_a = urhk_SetUrhkInp("tranDtl.partTranDetailLL.<rec_0>.partTranType.code|C")
+sv_u = urhk_SetUrhkInp("tranDtl.partTranDetailLL.<rec_0>.tranAmt|100")
+sv_u = urhk_SetUrhkInp("tranDtl.partTranDetailLL.<rec_0>.tranParticulars|TEST") 
+sv_u = urhk_SetUrhkInp("tranDtl.partTranDetailLL.<rec_0>.tranCrncyCode.crncyCode|VND") 
+sv_u = urhk_SetUrhkInp("tranDtl.partTranDetailLL.<rec_0>.refCrncyCode.crncyCode|VND") 
+sv_u = urhk_SetUrhkInp("tranDtl.partTranDetailLL.<rec_0>.refAmt|100")
+sv_u = urhk_SetUrhkInp("tranHdr.cashDenomFlg|Y")
+sv_u = urhk_SetUrhkInp("tranDtl.cashDenomDetailLL.<rec_0>.key.serial_num|0001")
+sv_u = urhk_SetUrhkInp("tranDtl.cashDenomDetailLL.<rec_0>.cashDenomHdr.crncyCode|VND") 
+sv_u = urhk_SetUrhkInp("tranDtl.cashDenomDetailLL.<rec_0>.cashDenomHdr.tranAmt|100") 
+sv_u = urhk_SetUrhkInp("tranDtl.cashDenomDetailLL.<rec_0>.cashDenomHdr.totalCash|100") 
+sv_a = urhk_SetUrhkOut("tranDtl.tranIdentifier.tranId|tranId")
+sv_a = urhk_SetUrhkOut("tranDtl.tranIdentifier.tranDate|tranDate")
+sv_a = urhk_SetUrhkOut("tranDtl.maxPTranSrlNum|partTranSrlNum")
+sv_a = urhk_SetUrhkOut("tranDtl.ignoreXcpnFlg|ignoreXcpnFlg")
+sv_u = urhk_ExecSrv("SRV_AddAndPostCashTran|call_mode = N|same_user_verify = Y|retain_all_output = Y")
+print(sv_u)
+
+ENDOFSCRIPT:
+
+END-->
